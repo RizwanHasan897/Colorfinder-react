@@ -1,4 +1,5 @@
 import React, {useState } from "react";
+import { EyeDropper } from "react-eyedrop";
 
 const ColorFinder = () => {
   interface Images {
@@ -7,6 +8,7 @@ const ColorFinder = () => {
 
   const [image, setImage] = useState<Images | null>(null);
   const [eyeDropperActive, setEyedropperActive] = useState<boolean>(false);
+  const [color, setColor] = useState<string>('#5524e7')
 
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -20,8 +22,15 @@ const ColorFinder = () => {
       setEyedropperActive(false);
     }else{
       setEyedropperActive(true);
+      opneEyedropper();
     }
   }
+
+  const opneEyedropper = () =>{
+    let eyeDropper = new EyeDropper();
+    const { sRGBHex } = eyeDropper.open();
+    setColor(sRGBHex);
+  } 
 
   return(
       <div className='wrapper'>
@@ -41,7 +50,7 @@ const ColorFinder = () => {
           <div className="your-color">
             <p>The Color you selected is</p>
             <button className="selected-color">
-                <p>Color</p>
+                <p>{color}</p>
             </button>
           </div>
         </div>
