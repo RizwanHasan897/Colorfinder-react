@@ -7,7 +7,6 @@ const ColorFinder = () => {
   }
 
   const [image, setImage] = useState<Images | null>(null);
-  const [eyeDropperActive, setEyedropperActive] = useState<boolean>(false);
   const [color, setColor] = useState<string>('#5524e7')
 
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,20 +16,11 @@ const ColorFinder = () => {
     }
   };
 
-  const handleOpenEye = () => {
-    if(eyeDropperActive){
-      setEyedropperActive(false);
-    }else{
-      setEyedropperActive(true);
-      opneEyedropper();
-    }
-  }
-
-  const opneEyedropper = () =>{
+  const handleOpenEye = async () => {
     let eyeDropper = new EyeDropper();
-    const { sRGBHex } = eyeDropper.open();
-    setColor(sRGBHex);
-  } 
+    const { sRGBHex } = await eyeDropper.open();
+    setColor(sRGBHex);    
+  }
 
   return(
       <div className='wrapper'>
@@ -43,7 +33,8 @@ const ColorFinder = () => {
           <div className="eyeopener">
             <p>Open Eyedroper and select the color we want</p>
             <button className="openEye-btn" onClick={handleOpenEye}>
-              {eyeDropperActive ? (<p>Deactivate EyeDropper</p>): (<p>Activate Eyedropper</p>)}
+              {/* {eyeDropperActive ? (<p>Deactivate EyeDropper</p>): (<p>Activate Eyedropper</p>)} */}
+              Activate EyeDropper
             </button>
           </div>
 
