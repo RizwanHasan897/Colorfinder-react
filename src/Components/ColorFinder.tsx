@@ -7,7 +7,7 @@ const ColorFinder = () => {
   }
 
   const [image, setImage] = useState<Images | null>(null);
-  const [color, setColor] = useState<string>('#5524e7')
+  const [color, setColor] = useState<string>('#808080')
 
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -33,14 +33,14 @@ const ColorFinder = () => {
           <div className="eyeopener">
             <p>Open Eyedroper and select the color we want</p>
             <button className="openEye-btn" onClick={handleOpenEye}>
-              {/* {eyeDropperActive ? (<p>Deactivate EyeDropper</p>): (<p>Activate Eyedropper</p>)} */}
               Activate EyeDropper
             </button>
           </div>
 
           <div className="your-color">
             <p>The Color you selected is</p>
-            <button className="selected-color">
+            <button className="selected-color"
+            style={{background: color}}>
                 <p>{color}</p>
             </button>
           </div>
