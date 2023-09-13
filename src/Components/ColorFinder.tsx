@@ -7,10 +7,11 @@ const ColorFinder = () => {
   }
   
   const [image, setImage] = useState<Images | null>(null);
+
   const [color, setColor] = useState<string>("#808080");
   const [eyeDropperActive, setEyeDropperActive] = useState<boolean>(false);
-  
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  
   
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -95,6 +96,7 @@ const ColorFinder = () => {
       };
     }
   }, [image]);
+
 
 
   const handleCopy = async () => {
